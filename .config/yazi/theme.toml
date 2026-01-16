@@ -1,0 +1,4 @@
+"$schema" = "https://yazi-rs.github.io/schemas/theme.json"
+
+[mgr]
+syntect_theme = "~/.config/bat/themes/Catppuccin Frappe.tmTheme"
