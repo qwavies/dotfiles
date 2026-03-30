@@ -255,9 +255,95 @@ picture.mpris-background {
 
 /* Volume */
 .widget-volume {
-  background: @background-sec;
-  color: @background;
-  padding: 4px;
-  margin: 6px;
-  border-radius: 6px;
+  padding: 6px 5px 5px 5px;
+  margin: unset;
+  font-size: 1.3rem;
+}
+
+.widget-volume scale trough {
+  background-color: @background-alt;
+  border-radius: 12px;
+  min-height: 12px;
+  min-width: 100px;
+  margin: 0px 12px;
+}
+
+.widget-volume scale highlight {
+  background-color: @blue;
+  border-radius: 12px;
+}
+
+.widget-volume scale slider {
+  background-color: @text;
+  border-radius: 100%;
+  min-height: 20px;
+  min-width: 20px;
+  margin: -4px 0px;
+}
+
+.widget-volume > box > button {
+  border: none;
+}
+.per-app-volume {
+  padding: 4px 8px 8px 8px;
+  margin: 0px 8px 8px 8px;
+}
+
+.per-app-volume image {
+  -gtk-icon-size: 24px;
+  margin-right: 12px;
+}
+
+.per-app-volume label {
+  font-size: 0.9rem;
+  color: alpha(@text, 0.7);
+}
+
+.per-app-volume scale trough {
+  background-color: @background-alt;
+  border-radius: 12px;
+  min-height: 12px;
+  min-width: 100px;
+  margin: 0px 12px;
+}
+
+.per-app-volume scale highlight {
+  background-color: @blue;
+  border-radius: 12px;
+}
+
+.per-app-volume scale slider {
+  background-color: @text;
+  border-radius: 100%;
+  min-height: 20px;
+  min-width: 20px;
+  margin: -4px 0px;
+}
+
+/* Backlight */
+.widget-backlight {
+  padding: 6px 5px 5px 5px;
+  margin: unset;
+  font-size: 1.3rem;
+}
+
+.widget-backlight scale trough {
+  background-color: @background-alt;
+  border-radius: 12px;
+  min-height: 12px;
+  min-width: 100px;
+  margin: 0px 29px 0px 12px;
+}
+
+.widget-backlight scale highlight {
+  background-color: @blue;
+  border-radius: 12px;
+}
+
+.widget-backlight scale slider {
+  background-color: @text;
+  border-radius: 100%;
+  min-height: 20px;
+  min-width: 20px;
+  margin: -4px 0px;
 }

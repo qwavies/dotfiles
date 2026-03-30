@@ -20,3 +20,19 @@ rounded=$(echo "scale=0; (($new_percent + 2.5) / 5) * 5" | bc)
 
 # Set the volume
 wpctl set-volume @DEFAULT_AUDIO_SINK@ "${rounded}%"
+
+NOTIFICATION_ID=9993
+ID_FILE="/tmp/volume_notification_id"
+
+# send notification
+if [ -f "$ID_FILE" ]; then
+    NOTIFICATION_ID=$(cat "$ID_FILE")
+    notify-send "Volume" "$rounded%" \
+        --replace-id="$NOTIFICATION_ID" \
+        --urgency=low \
+        --print-id > "$ID_FILE"
+else
+    notify-send "Volume" "$rounded%" \
+        --urgency=low \
+        --print-id > "$ID_FILE"
+fi

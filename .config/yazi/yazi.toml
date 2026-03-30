@@ -2,7 +2,7 @@
 
 [mgr]
 show_hidden = true
-ratio = [1, 4, 3]
+ratio = [2, 4, 5]
 sort_dir_first = true
 scrolloff = 5
 

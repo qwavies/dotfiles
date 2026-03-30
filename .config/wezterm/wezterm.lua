@@ -15,9 +15,10 @@ local config = wezterm.config_builder()
 
 -- 0 is fully transparent
 -- 1 is not transparent
-local transparency_value = 0.8
+local transparency_value = 0.57
 
 config.font = wezterm.font_with_fallback({
+  -- "Monocraft",
   "CaskaydiaMono Nerd Font",
   -- "FiraCode Nerd Font",
   -- "JetBrainsMono Nerd Font",
@@ -38,6 +39,7 @@ config.window_decorations = "RESIZE|NONE"
 config.term = "xterm-256color"
 config.front_end = "OpenGL"
 config.enable_wayland = true
+config.warn_about_missing_glyphs = true
 config.prefer_egl = true
 config.font_size = 20
 config.max_fps = 144
@@ -159,6 +161,7 @@ config.keys = {
     mods = "CTRL|ALT",
     action = wezterm.action.EmitEvent("toggle-transparency"),
   },
+
   -- -------------------------------------------------
   -- Create new panes using vim directions h,j,k,l
   --
@@ -202,29 +205,23 @@ config.keys = {
   --
   -- CTRL + ALT + DIRECTION
   -- -------------------------------------------------
-  {
-    key = "u",
-    mods = "CTRL|ALT",
-    action = wezterm.action.AdjustPaneSize({ "Left", 3 }),
-  },
-  {
-    key = "i",
-    mods = "CTRL|ALT",
-    action = wezterm.action.AdjustPaneSize({ "Down", 2 }),
-  },
-  {
-    key = "o",
-    mods = "CTRL|ALT",
-    action = wezterm.action.AdjustPaneSize({ "Up", 2 }),
-  },
-  {
-    key = "p",
-    mods = "CTRL|ALT",
-    action = wezterm.action.AdjustPaneSize({ "Right", 3 }),
-  },
+  { key = "u", mods = "CTRL|ALT", action = wezterm.action.AdjustPaneSize({ "Left", 3 }) },
+  { key = "i", mods = "CTRL|ALT", action = wezterm.action.AdjustPaneSize({ "Down", 2 }) },
+  { key = "o", mods = "CTRL|ALT", action = wezterm.action.AdjustPaneSize({ "Up", 2 }) },
+  { key = "p", mods = "CTRL|ALT", action = wezterm.action.AdjustPaneSize({ "Right", 3 }) },
 
   -- -------------------------------------------------
-  -- Select Pane
+  -- Move to new pane using vim directions h,j,k,l
+  --
+  -- ALT + DIRECTION
+  -- -------------------------------------------------
+  { key = "h", mods = "ALT", action = wezterm.action.ActivatePaneDirection("Left") },
+  { key = "j", mods = "ALT", action = wezterm.action.ActivatePaneDirection("Down") },
+  { key = "k", mods = "ALT", action = wezterm.action.ActivatePaneDirection("Up") },
+  { key = "l", mods = "ALT", action = wezterm.action.ActivatePaneDirection("Right") },
+
+  -- -------------------------------------------------
+  -- Select Specific Pane
   --
   -- CTRL + '
   -- -------------------------------------------------
@@ -327,8 +324,8 @@ config.window_frame = {
 
 config.inactive_pane_hsb = {
   -- brightness = 1.0,
-  brightness = 0.8,
-  -- brightness = 0.45,
+  -- brightness = 0.8,
+  brightness = 0.45,
   -- brightness = 0.2,
 }
 

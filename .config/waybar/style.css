@@ -80,6 +80,7 @@ tooltip label {
   /* transition: all 0.3s ease-in-out; */
 }
 
+#custom-weather,
 #battery,
 #pulseaudio,
 #network,
@@ -111,4 +112,8 @@ tooltip label {
 
 #battery {
   color: @green;
+}
+
+#custom-weather {
+  color: @fg;
 }

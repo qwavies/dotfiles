@@ -64,11 +64,17 @@ alias grep="rg"
 # fd
 alias find="fd"
 
+# ncdu
+alias duu="ncdu"
+
 # vscodium
 alias code="codium"
 
 # common "exit" mistype
 alias eixt="exit"
+
+# traverse to root of the git directory
+alias cdg='cd $(git rev-parse --show-toplevel)'
 
 # -----------------
 # movement commands
@@ -105,6 +111,7 @@ bindkey "^e" edit-command-line
 export EDITOR="nvim"
 export TERM="wezterm"
 export TERMINAL="wezterm"
+export MANPAGER="nvim +Man!"
 
 # -----------------
 # other settings
@@ -116,3 +123,4 @@ unsetopt PROMPT_SP
 # startup
 # -----------------
 fastfetch
+

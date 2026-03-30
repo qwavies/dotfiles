@@ -41,6 +41,9 @@
     }
   },
   "widgets": [
+    "buttons-grid",
+    "volume",
+    "backlight",
     "mpris",
     "dnd",
     "title",
@@ -64,30 +67,37 @@
       "image-radius": 12
     },
     "volume": {
-      "label": "󰕾",
-        "show-per-app": true
+      "label": " 󰕾 ",
+      "expand-button-label": " ",
+      "collapse-button-label": " ",
+      "show-per-app": true,
+      "show-per-app-icon": false,
+      "show-per-app-label": true
+    },
+    "backlight": {
+      "label": " 󰃠 "
     },
     "buttons-grid": {
       "actions": [
         {
-          "label": " ",
-          "command": "amixer set Master toggle"
+          "label": " ",
+          "command": "pactl set-sink-mute @DEFAULT_SINK@ toggle"
         },
         {
-          "label": "",
-          "command": "amixer set Capture toggle"
+          "label": " ",
+          "command": "wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"
         },
         {
           "label": " ",
-          "command": "nm-connection-editor"
+          "command": "orbit toggle center --tab wifi"
         },
         {
-          "label": "󰂯",
-          "command": "blueman-manager"
+          "label": "󰂯 ",
+          "command": "orbit toggle center --tab bluetooth"
         },
         {
-          "label": "󰏘",
-          "command": "nwg-look"
+          "label": " ",
+          "command": "wezterm"
         }
         
       ]
