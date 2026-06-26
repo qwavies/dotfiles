@@ -6,6 +6,7 @@ source packages/pacman.conf
 source packages/aur.conf
 
 if ! command -v yay >/dev/null 2>&1; then
+    sudo pacman -S --needed --noconfirm git base-devel
     git clone https://aur.archlinux.org/yay.git /tmp/yay
     echo "yay not found in system, installing now..."
     cd /tmp/yay
@@ -15,7 +16,7 @@ if ! command -v yay >/dev/null 2>&1; then
 fi
 
 echo "updating system..."
-sudo pacman -Syu --noconfirm
+yay -Syu --noconfirm
 
 echo "installing pacman packages..."
 sudo pacman -S --needed --noconfirm "${PACMAN_PKGS[@]}"
@@ -28,24 +29,40 @@ if ! which "$SHELL" | grep -q "zsh"; then
     chsh -s $(which zsh)
 fi
 
+create_symlink() {
+    local src="$1"
+    local dest="$2"
+
+    if [ -e "$dest" ] && [ ! -L "$dest" ]; then
+        rm -rf "${dest}.bak"
+	mv "$dest" "${dest}.bak"
+    elif [ -L "$dest" ]; then
+	rm -f "$dest"
+    fi
+
+    mkdir -p "$(dirname "$dest")"
+    ln -sfn "$src" "$dest"
+}
+
 echo "setting dotfile symlinks"
 DOTFILE_CONFIGS_DIR="$(pwd)/configs"
-ln -sf ${DOTFILE_CONFIGS_DIR}/.zshrc ~/.zshrc
-ln -sf ${DOTFILE_CONFIGS_DIR}/starship.toml ~/.config/starship.toml
-ln -sfn ${DOTFILE_CONFIGS_DIR}/bat ~/.config/bat
-ln -sfn ${DOTFILE_CONFIGS_DIR}/fastfetch ~/.config/fastfetch
-ln -sfn ${DOTFILE_CONFIGS_DIR}/hypr ~/.config/hypr
-ln -sfn ${DOTFILE_CONFIGS_DIR}/rofi ~/.config/rofi
-ln -sfn ${DOTFILE_CONFIGS_DIR}/swaync ~/.config/swaync
-ln -sfn ${DOTFILE_CONFIGS_DIR}/waybar ~/.config/waybar
-ln -sfn ${DOTFILE_CONFIGS_DIR}/wezterm ~/.config/wezterm
-ln -sfn ${DOTFILE_CONFIGS_DIR}/wlogout ~/.config/wlogout
-ln -sfn ${DOTFILE_CONFIGS_DIR}/yazi ~/.config/yazi
+
+create_symlink "${DOTFILE_CONFIGS_DIR}/.zshrc" "$HOME/.zshrc"
+create_symlink "${DOTFILE_CONFIGS_DIR}/starship.toml" "$HOME/.config/starship.toml"
+create_symlink "${DOTFILE_CONFIGS_DIR}/bat" "$HOME/.config/bat"
+create_symlink "${DOTFILE_CONFIGS_DIR}/fastfetch" "$HOME/.config/fastfetch"
+create_symlink "${DOTFILE_CONFIGS_DIR}/hypr" "$HOME/.config/hypr"
+create_symlink "${DOTFILE_CONFIGS_DIR}/rofi" "$HOME/.config/rofi"
+create_symlink "${DOTFILE_CONFIGS_DIR}/swaync" "$HOME/.config/swaync"
+create_symlink "${DOTFILE_CONFIGS_DIR}/waybar" "$HOME/.config/waybar"
+create_symlink "${DOTFILE_CONFIGS_DIR}/wezterm" "$HOME/.config/wezterm"
+create_symlink "${DOTFILE_CONFIGS_DIR}/wlogout" "$HOME/.config/wlogout"
+create_symlink "${DOTFILE_CONFIGS_DIR}/yazi" "$HOME/.config/yazi"
 
 if grep -q "^#\s*Color" /etc/pacman.conf; then
     sudo sed -i "s/^#\s*Color/Color/" /etc/pacman.conf
     echo "Adding colours to pacman/yay"
 fi
-# TODO: sddm, nvim
+# TODO: sddm, nvim, cursor
 
 echo "post-install script finished successfully. A full system restart is recommended."
