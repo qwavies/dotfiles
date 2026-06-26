@@ -58,6 +58,7 @@ create_symlink "${DOTFILE_CONFIGS_DIR}/waybar" "$HOME/.config/waybar"
 create_symlink "${DOTFILE_CONFIGS_DIR}/wezterm" "$HOME/.config/wezterm"
 create_symlink "${DOTFILE_CONFIGS_DIR}/wlogout" "$HOME/.config/wlogout"
 create_symlink "${DOTFILE_CONFIGS_DIR}/yazi" "$HOME/.config/yazi"
+create_symlink "${DOTFILE_CONFIGS_DIR}/nvim" "$HOME/.config/nvim"
 
 if grep -q "^#\s*Color" /etc/pacman.conf; then
     sudo sed -i "s/^#\s*Color/Color/" /etc/pacman.conf
