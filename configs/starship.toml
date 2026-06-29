@@ -10,7 +10,7 @@ add_newline = true
 
 [directory]
 truncation_length = 0
-style = "bold #a9bed8"
+style = "bold"
 format = "[$read_only]($read_only_style) [$path]($style) "
 truncation_symbol = ".../"
 read_only = "\uf023"
