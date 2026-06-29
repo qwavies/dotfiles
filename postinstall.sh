@@ -21,7 +21,7 @@ if ! command -v yay >/dev/null 2>&1; then
 fi
 
 echo "updating system..."
-yay -Syu --noconfirm
+sudo pacman -Syu --noconfirm
 
 echo "installing pacman packages..."
 sudo pacman -S --needed --noconfirm "${PACMAN_PKGS[@]}"
