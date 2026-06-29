@@ -84,9 +84,8 @@ GreeterEnvironment=QML2_IMPORT_PATH=/usr/share/sddm/themes/minecraft/components/
 
 [Theme]
 Current=minecraft
+CursorSize=32
 EOF
 fi
-
-# TODO: cursor
 
 echo -e "${BOLD_PURPLE}Post-install script finished successfully! A full system restart is recommended.${RESET}"
