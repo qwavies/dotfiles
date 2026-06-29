@@ -2,6 +2,9 @@
 
 set -e # exit on error
 
+BOLD_PURPLE="\e[1;35m"
+RESET="\e[0m"
+
 source packages/pacman.conf
 source packages/aur.conf
 
@@ -13,24 +16,24 @@ mkdir --parents ~/Videos
 if ! command -v yay >/dev/null 2>&1; then
     sudo pacman -S --needed --noconfirm git base-devel
     git clone https://aur.archlinux.org/yay.git /tmp/yay
-    echo "yay not found in system, installing now..."
+    echo -e "${BOLD_PURPLE}yay not found in system, installing now...${RESET}"
     cd /tmp/yay
     makepkg -si --noconfirm
     cd -
     rm -rf /tmp/yay
 fi
 
-echo "updating system..."
+echo -e "${BOLD_PURPLE}Updating system...${RESET}"
 sudo pacman -Syu --noconfirm
 
-echo "installing pacman packages..."
+echo -e "${BOLD_PURPLE}Installing pacman packages...${RESET}"
 sudo pacman -S --needed --noconfirm "${PACMAN_PKGS[@]}"
 
-echo "installing aur packages..."
+echo -e "${BOLD_PURPLE}Installing aur packages...${RESET}"
 yay -S --needed --noconfirm "${AUR_PKGS[@]}"
 
 if ! which "$SHELL" | grep -q "zsh"; then
-    echo "changing default shell to zsh. You may need to restart for changes to take effect."
+    echo -e "${BOLD_PURPLE}Changing default shell to zsh. You may need to restart for changes to take effect.${RESET}"
     chsh -s $(which zsh)
 fi
 
@@ -49,7 +52,7 @@ create_symlink() {
     ln -sfn "$src" "$dest"
 }
 
-echo "setting dotfile symlinks"
+echo -e "${BOLD_PURPLE}Setting dotfile symlinks${RESET}"
 DOTFILE_CONFIGS_DIR="$(pwd)/configs"
 
 create_symlink "${DOTFILE_CONFIGS_DIR}/.zshrc" "$HOME/.zshrc"
@@ -67,8 +70,8 @@ create_symlink "${DOTFILE_CONFIGS_DIR}/nvim" "$HOME/.config/nvim"
 
 if grep -q "^#\s*Color" /etc/pacman.conf; then
     sudo sed -i "s/^#\s*Color/Color/" /etc/pacman.conf
-    echo "Adding colours to pacman/yay"
+    echo -e "${BOLD_PURPLE}Adding colours to pacman/yay${RESET}"
 fi
 # TODO: sddm, cursor
 
-echo "post-install script finished successfully. A full system restart is recommended."
+echo -e "${BOLD_PURPLE}Post-install script finished successfully. A full system restart is recommended.${RESET}"
