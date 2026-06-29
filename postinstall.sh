@@ -33,7 +33,7 @@ echo -e "${BOLD_PURPLE}Installing aur packages...${RESET}"
 yay -S --needed --noconfirm "${AUR_PKGS[@]}"
 
 if ! which "$SHELL" | grep -q "zsh"; then
-    echo -e "${BOLD_PURPLE}Changing default shell to zsh. You may need to restart for changes to take effect.${RESET}"
+    echo -e "${BOLD_PURPLE}Changing default shell to zsh. You may need to restart for changes to take effect...${RESET}"
     chsh -s $(which zsh)
 fi
 
@@ -52,7 +52,7 @@ create_symlink() {
     ln -sfn "$src" "$dest"
 }
 
-echo -e "${BOLD_PURPLE}Setting dotfile symlinks${RESET}"
+echo -e "${BOLD_PURPLE}Setting dotfile symlinks...${RESET}"
 DOTFILE_CONFIGS_DIR="$(pwd)/configs"
 
 create_symlink "${DOTFILE_CONFIGS_DIR}/.zshrc" "$HOME/.zshrc"
@@ -70,8 +70,23 @@ create_symlink "${DOTFILE_CONFIGS_DIR}/nvim" "$HOME/.config/nvim"
 
 if grep -q "^#\s*Color" /etc/pacman.conf; then
     sudo sed -i "s/^#\s*Color/Color/" /etc/pacman.conf
-    echo -e "${BOLD_PURPLE}Adding colours to pacman/yay${RESET}"
+    echo -e "${BOLD_PURPLE}Adding colours to pacman/yay...${RESET}"
 fi
-# TODO: sddm, cursor
 
-echo -e "${BOLD_PURPLE}Post-install script finished successfully. A full system restart is recommended.${RESET}"
+sudo cp -r "${DOTFILE_CONFIGS_DIR}/sddm/minecraft" "/usr/share/sddm/themes"
+
+if ! grep -q "Current=minecraft" /etc/sddm.conf 2>/dev/null; then
+    echo -e "${BOLD_PURPLE}Changing sddm theme... (avatar can be changed by using the provided script)${RESET}"
+    sudo tee /etc/sddm.conf > /dev/null << 'EOF'
+[General]
+InputMethod=qtvirtualkeyboard
+GreeterEnvironment=QML2_IMPORT_PATH=/usr/share/sddm/themes/minecraft/components/,QT_IM_MODULE=qtvirtualkeyboard
+
+[Theme]
+Current=minecraft
+EOF
+fi
+
+# TODO: cursor
+
+echo -e "${BOLD_PURPLE}Post-install script finished successfully! A full system restart is recommended.${RESET}"
