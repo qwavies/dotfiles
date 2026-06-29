@@ -5,6 +5,11 @@ set -e # exit on error
 source packages/pacman.conf
 source packages/aur.conf
 
+mkdir --parents ~/Downloads
+mkdir --parents ~/Documents
+mkdir --parents ~/Pictures/Screenshots
+mkdir --parents ~/Videos
+
 if ! command -v yay >/dev/null 2>&1; then
     sudo pacman -S --needed --noconfirm git base-devel
     git clone https://aur.archlinux.org/yay.git /tmp/yay
@@ -64,6 +69,6 @@ if grep -q "^#\s*Color" /etc/pacman.conf; then
     sudo sed -i "s/^#\s*Color/Color/" /etc/pacman.conf
     echo "Adding colours to pacman/yay"
 fi
-# TODO: sddm, nvim, cursor
+# TODO: sddm, cursor
 
 echo "post-install script finished successfully. A full system restart is recommended."
