@@ -2,6 +2,15 @@
 
 set -e # exit on error
 
+# TODO: 
+# - [ ] fix/redo waybar
+# - [ ] hyprlock
+# - [ ] hypridle
+# - [ ] wlogout
+# - [ ] resize swaync & notifs
+# - [ ] plymouth
+# - [ ] switch hyprland over to lua
+
 BOLD_PURPLE="\e[1;35m"
 RESET="\e[0m"
 
@@ -11,7 +20,10 @@ source packages/aur.conf
 mkdir --parents ~/Downloads
 mkdir --parents ~/Documents
 mkdir --parents ~/Pictures/Screenshots
+mkdir --parents ~/Pictures/wallpapers
 mkdir --parents ~/Videos
+
+rsync -a $(pwd)/wallpapers/ ~/Pictures/wallpapers/
 
 if ! command -v yay >/dev/null 2>&1; then
     sudo pacman -S --needed --noconfirm git base-devel
@@ -88,14 +100,5 @@ Current=minecraft
 CursorSize=32
 EOF
 fi
-
-# TODO: 
-# - [ ] fix/redo waybar
-# - [ ] hyprlock
-# - [ ] hypridle
-# - [ ] wlogout
-# - [ ] resize swaync & notifs
-# - [ ] plymouth
-# - [ ] switch hyprland over to lua
 
 echo -e "${BOLD_PURPLE}Post-install script finished successfully! A full system restart is recommended.${RESET}"
