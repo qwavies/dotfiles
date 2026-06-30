@@ -6,10 +6,16 @@ if pgrep -x "wlogout" > /dev/null; then
     exit 0
 fi
 
+height=1080
+if command -v hyprctl &>/dev/null && command -v jq &>/dev/null; then
+    height=$(hyprctl monitors -j | jq -r '.[] | select(.focused==true) | "\(.height) \(.scale)"' | awk '{print int($1/$2)}' 2>/dev/null)
+fi
+margin=$((height / 3))
+
 wlogout \
     --layout ~/.config/wlogout/layout \
     --css ~/.config/wlogout/style.css \
     --protocol layer-shell \
-    -b 5 \
-    -T 380 \
-    -B 380
+    --buttons-per-row 5 \
+    --margin-top "$margin" \
+    --margin-bottom "$margin"

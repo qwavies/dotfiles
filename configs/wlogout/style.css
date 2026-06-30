@@ -1,14 +1,13 @@
-/* ----------- 💫 https://github.com/JaKooLit 💫 -------- */
-/* pywal-wlogout */
+/* ----------- 💫 original at https://github.com/JaKooLit 💫 -------- */
 
-/* Importing pywal colors */
-
-@import '../../.cache/wal/colors-waybar.css';
-@define-color highlight #cfd3ff;
+/* Catppuccin Frappe Colors */
+@define-color blue #8caaee;
+@define-color subtext1 #b5bfe2;
+@define-color crust #1e2030;
 
 window {
   font-family: Fira Code Medium;
-  font-size: 16pt;
+  font-size: 28pt;
   background-color: rgba(24, 27, 32, 0.2);
 } 
 
@@ -23,22 +22,24 @@ button {
   border: none;
   border-radius: 36px;
   margin: 10px;
+  color: white;
+  font-weight: bold;
   text-shadow: 1px 1px black;
 }
 
 button:focus {
-  color: @highlight; /* TODO: */
+  color: @blue;
   border: 10px;
   border-color: red;
   box-shadow: none;
-  /* background-size : 20%; */
+  text-shadow: 2px 2px black;
 }
 
 button:hover {
   background-size: 35%;
   box-shadow: 0 0 10px 3px rgba(0,0,0,.4);
-  background-color: @color6;
-  color: black; /* TODO: */
+  background-color: @subtext1;
+  color: @crust;
   transition: all 0.2s cubic-bezier(.55, 0.0, .28, 1.682), box-shadow 0.5s ease-in;
   text-shadow: none;
 }
