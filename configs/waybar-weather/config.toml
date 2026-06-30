@@ -1,0 +1,66 @@
+## =============================================================================
+## General Configuration
+## =============================================================================
+
+units = "metric" # "metric", "imperial"
+# locale = "en-US"
+# loglevel = 0
+
+
+## =============================================================================
+## Weather Configuration
+## =============================================================================
+[weather]
+
+# provider = "open-meteo"
+# cold_threshold = 2.0
+# hot_threshold = 30.0
+
+
+## =============================================================================
+## Update and Output Intervals
+## =============================================================================
+[intervals]
+
+# weather_update = "15m"
+# output = "30s"
+
+
+## =============================================================================
+## Output Templates
+## =============================================================================
+[templates]
+
+## Please refer to the README for available variables and functions.
+
+# text = "{{.Current.ConditionIcon}} {{.Current.Temperature}}{{.Current.Units.Temperature}}"
+text = "{{.Current.ConditionIcon}} {{printf \"%.0f\" .Current.Temperature}}{{.Current.Units.Temperature}}"
+
+# alt_text = ""
+# tooltip = ""
+# alt_tooltip = ""
+# use_css_icon = false
+
+
+## =============================================================================
+## Geolocation Configuration
+## =============================================================================
+[geolocation]
+
+# geolocation_file = ""
+# cityname_file = ""
+# disable_geoip = false
+# disable_geoapi = false
+# disable_geolocation_file = false
+# disable_cityname_file = false
+# disable_ichnaea = false
+# disable_gpsd = false
+
+
+## =============================================================================
+## Geocoder Configuration
+## =============================================================================
+[geocoder]
+
+# provider = "nominatim"
+# apikey = ""
