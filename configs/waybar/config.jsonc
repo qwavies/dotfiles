@@ -9,8 +9,7 @@
     "position": "top",
     "margin-top": 5,
     "modules-left": [
-        "custom/wlogout",
-        "hyprland/workspaces"
+        "group/left-group"
     ],
     "modules-center": [
         "clock"
@@ -23,6 +22,14 @@
         // "battery",
         "custom/notification"
     ],
+
+    "group/left-group": {
+        "orientation": "horizontal",
+        "modules": [
+            "custom/wlogout",
+            "hyprland/workspaces"
+        ]
+    },
 
     "custom/wlogout": {
         "format": "󰣇",
