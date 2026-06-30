@@ -63,6 +63,7 @@ create_symlink "${DOTFILE_CONFIGS_DIR}/hypr" "$HOME/.config/hypr"
 create_symlink "${DOTFILE_CONFIGS_DIR}/rofi" "$HOME/.config/rofi"
 create_symlink "${DOTFILE_CONFIGS_DIR}/swaync" "$HOME/.config/swaync"
 create_symlink "${DOTFILE_CONFIGS_DIR}/waybar" "$HOME/.config/waybar"
+create_symlink "${DOTFILE_CONFIGS_DIR}/waybar-weather" "$HOME/.config/waybar-weather"
 create_symlink "${DOTFILE_CONFIGS_DIR}/wezterm" "$HOME/.config/wezterm"
 create_symlink "${DOTFILE_CONFIGS_DIR}/wlogout" "$HOME/.config/wlogout"
 create_symlink "${DOTFILE_CONFIGS_DIR}/yazi" "$HOME/.config/yazi"
@@ -87,5 +88,14 @@ Current=minecraft
 CursorSize=32
 EOF
 fi
+
+# TODO: 
+# - [ ] fix/redo waybar
+# - [ ] hyprlock
+# - [ ] hypridle
+# - [ ] wlogout
+# - [ ] resize swaync & notifs
+# - [ ] plymouth
+# - [ ] switch hyprland over to lua
 
 echo -e "${BOLD_PURPLE}Post-install script finished successfully! A full system restart is recommended.${RESET}"
