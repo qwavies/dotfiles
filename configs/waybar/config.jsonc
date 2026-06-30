@@ -17,16 +17,16 @@
     ],
     "modules-right": [
         // "tray",
-        "network",
+        // "network",
         "custom/weather",
         "pulseaudio",
-        "battery",
+        // "battery",
         "custom/notification"
     ],
 
     "custom/wlogout": {
         "format": "󰣇",
-        "on-click": "~/.config/waybar/scripts/wlogout.sh",
+        "on-click": "~/.config/wlogout/wlogout.sh",
         "tooltip": false
     },
 
