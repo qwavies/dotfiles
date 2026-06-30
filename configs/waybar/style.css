@@ -109,7 +109,7 @@ tooltip label {
 }
 
 #clock {
-  color: @blue;
+  color: @light_blue;
 }
 
 #custom-notification {
@@ -118,11 +118,15 @@ tooltip label {
 }
 
 #pulseaudio {
-  color: @yellow;
+  color: @light_blue;
+}
+
+#pulseaudio.muted {
+  color: @red;
 }
 
 #network {
-  color: @lavender;
+  color: @light_blue;
 }
 
 #battery {
