@@ -3,13 +3,13 @@
 set -e # exit on error
 
 # TODO: 
-# - [ ] fix/redo waybar
-# - [ ] hyprlock
-# - [ ] hypridle
-# - [ ] wlogout
-# - [ ] resize swaync & notifs
+# - [ ] README
+# - [x] fix/redo waybar
+# - [x] hyprlock
+# - [x] hypridle
+# - [x] wlogout
 # - [ ] plymouth
-# - [ ] switch hyprland over to lua
+# - [x] switch hyprland over to lua
 
 BOLD_PURPLE="\e[1;35m"
 RESET="\e[0m"
@@ -19,7 +19,7 @@ source packages/aur.conf
 
 mkdir --parents ~/Downloads
 mkdir --parents ~/Documents
-mkdir --parents ~/Pictures/Screenshots
+mkdir --parents ~/Pictures/screenshots
 mkdir --parents ~/Pictures/wallpapers
 mkdir --parents ~/Videos
 

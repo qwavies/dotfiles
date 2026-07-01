@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Take a full screen screenshot
-filename=~/Pictures/Screenshots/$(date '+%Y-%m-%d_%H-%M-%S').png
+filename=~/Pictures/screenshots/$(date '+%Y-%m-%d_%H-%M-%S').png
 grimblast --freeze copysave screen "$filename"
 
 if [ $? -eq 0 ]; then
