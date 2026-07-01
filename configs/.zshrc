@@ -86,7 +86,6 @@ home() {
    fastfetch
 }
 
-gh() { cd $HOME }
 gd() { cd $HOME/Downloads }
 gc() { cd $HOME/.config }
 :q() { exit }
