@@ -1,0 +1,12 @@
+catppuccin.catppuccin-vsc
+currybab.hybrid-line-numbers
+formulahendry.code-runner
+llvm-vs-code-extensions.vscode-clangd
+marimo-team.vscode-marimo
+ms-python.python
+pkief.material-product-icons
+qwtel.sqlite-viewer
+sumneko.lua
+tamasfe.even-better-toml
+usernamehw.errorlens
+vscodevim.vim
