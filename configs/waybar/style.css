@@ -41,6 +41,12 @@ tooltip label {
   padding: 0.33em;
 }
 
+button:hover {
+  background: inherit;
+  box-shadow: none;
+  text-shadow: none;
+}
+
 #left-group {
   background-color: @crust;
   padding: 0.28em 0.67em;
@@ -79,7 +85,7 @@ tooltip label {
 }
 
 #workspaces button:hover {
-  background-color: @lavender;
+  background-color: @blue;
   color: @crust;
   /* border-radius: 0.89em; */
   /* min-width: 2.78em; */
