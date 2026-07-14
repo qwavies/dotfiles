@@ -5,6 +5,15 @@ local menu = "~/.config/rofi/launchers/type-2/launcher.sh || pkill rofi"
 -- Open terminal
 hl.bind("SUPER + Q", hl.dsp.exec_cmd(terminal))
 
+-- Open terminal and connect to wezterm mux session
+hl.bind("SUPER + A", function()
+  hl.dispatch(hl.dsp.exec_cmd("wezterm connect unix", {
+    float = true,
+    size = { "monitor_w * 0.54", "monitor_h * 0.52" },
+    -- move = { "cursor_x - (window_w * 0.5)", "cursor_y - (window_h * 0.5)" },
+  }))
+end)
+
 -- Open file manager
 hl.bind("SUPER + E", hl.dsp.exec_cmd(file_manager))
 
@@ -25,8 +34,9 @@ hl.bind("SUPER + B", hl.dsp.exec_cmd("orbit toggle"))
 
 -- Toggle floating
 hl.bind("SUPER + T", function()
+  hl.dispatch(hl.dsp.window.resize({ x = 2800, y = 1600 }))
+  -- hl.dispatch(hl.dsp.window.resize({ "monitor_w * 0.6", "monitor_h * 0.5" }))
   hl.dispatch(hl.dsp.window.float({ action = "toggle" }))
-  hl.dispatch(hl.dsp.window.resize({ x = 1400, y = 800 }))
   hl.dispatch(hl.dsp.window.center())
 end)
 
@@ -88,7 +98,6 @@ hl.bind("SUPER + mouse_up",   hl.dsp.focus({ workspace = "e-1" }))
 hl.bind("SUPER + mouse:272", hl.dsp.window.drag(),   { mouse = true })
 hl.bind("SUPER + mouse:273", hl.dsp.window.resize(), { mouse = true })
 
--- TODO: adjust volume with extra mouse buttons
 hl.bind("mouse:275", hl.dsp.exec_cmd("~/.config/hypr/scripts/volume.sh down"), { locked = true, repeating = true })
 hl.bind("mouse:276", hl.dsp.exec_cmd("~/.config/hypr/scripts/volume.sh up"), { locked = true, repeating = true })
 

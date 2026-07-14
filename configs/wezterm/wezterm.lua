@@ -41,7 +41,7 @@ config.front_end = "OpenGL"
 config.enable_wayland = true
 config.warn_about_missing_glyphs = true
 config.prefer_egl = true
-config.font_size = 20
+config.font_size = 36
 config.max_fps = 144
 config.animation_fps = 1
 config.cursor_blink_rate = 600
@@ -327,6 +327,16 @@ config.inactive_pane_hsb = {
   -- brightness = 0.8,
   brightness = 0.45,
   -- brightness = 0.2,
+}
+
+-- -------------------------------------------------
+--
+-- Pane related settings
+--
+-- -------------------------------------------------
+
+config.unix_domains = {
+  { name = "unix" },
 }
 
 -- -------------------------------------------------
